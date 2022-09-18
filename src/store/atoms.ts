@@ -13,15 +13,15 @@ export const questionsAtom = atom<QuestionType[]>({
 	effects: [sessionAtom]
 });
 
-export const correctAnswersAtom = atom<0 | 1 | 2 | 3[]>({
+export const correctAnswersAtom = atom<(0 | 1 | 2 | 3)[]>({
 	key: "correctAnswersAtom",
-	default: [] as 0 | 1 | 2 | 3[],
+	default: [] as (0 | 1 | 2 | 3)[],
 	effects: [sessionAtom]
 });
 
-export const userAnswersAtom = atom<0 | 1 | 2 | 3[]>({
+export const userAnswersAtom = atom<(0 | 1 | 2 | 3)[]>({
 	key: "userAnswersAtom",
-	default: [] as 0 | 1 | 2 | 3[],
+	default: [] as (0 | 1 | 2 | 3)[],
 	effects: [sessionAtom]
 });
 

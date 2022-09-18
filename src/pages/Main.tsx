@@ -1,11 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
 import { useSetRecoilState } from "recoil";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
 import { fetchQuiz } from "../apis";
-import { correctAnswersAtom, questionsAtom } from "../store/atoms";
+import { correctAnswersAtom, questionsAtom, userAnswersAtom } from "../store/atoms";
 
 const StyledMain = styled.div`
   display: flex;
@@ -31,12 +32,14 @@ const StyledMain = styled.div`
 `;
 
 function Main() {
+	const navigate = useNavigate();
 
 	const setQuestions = useSetRecoilState(questionsAtom);
 	const setAnswers = useSetRecoilState(correctAnswersAtom);
+	const setUserAnswers = useSetRecoilState(userAnswersAtom);
 
 	const getRandomAnswerSheet = () => {
-		const answer = [] as any[];
+		const answer = [] as (0 | 1 | 2 | 3)[];
 		for (let i = 0; i < 10; i += 1) {
 			const random = Math.floor(Math.random() * 4);
 			if (random === 0 || random === 1 || random === 2 || random === 3) {
@@ -44,6 +47,7 @@ function Main() {
 			}
 		}
 		setAnswers(answer);
+		setUserAnswers([]);
 	};
 
 	const handleClickStart = () => {
@@ -53,6 +57,7 @@ function Main() {
 			});
 
 		getRandomAnswerSheet();
+		navigate("/quiz");
 	};
 
 	return (

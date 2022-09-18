@@ -2,9 +2,10 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { RecoilRoot } from "recoil";
-import Main from "./pages/Main";
 import GlobalStyle from "./styles/gloabalStyle";
 import theme from "./styles/theme";
+import Main from "./pages/Main";
+import Quiz from "./pages/Quiz";
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 				<BrowserRouter>
 					<Routes>
 						<Route path="/" element={<Main />} />
+						<Route path="/quiz" element={<Quiz />} />
 					</Routes>
 				</BrowserRouter>
 			</RecoilRoot>
