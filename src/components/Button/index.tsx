@@ -2,7 +2,7 @@ import React from "react";
 import { StyledButton } from "./buttonStyle";
 
 type ButtonProps = {
-	children: string;
+	children: JSX.Element | string;
 	buttonType?: string;
 	handleClick?: (e: React.FormEvent<HTMLButtonElement>) => void;
 };

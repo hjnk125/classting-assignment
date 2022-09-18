@@ -16,8 +16,7 @@ module.exports = {
 		"no-console": ["warn", { allow: ["warn", "error"] }],
 		quotes: ["error", "double"],
 		"react/function-component-definition": "off",
-		"react/jsx-props-no-spreading": "off",
-
+		"default-param-last": "off",
 		"import/extensions": [
 			"error",
 			"ignorePackages",
@@ -27,7 +26,5 @@ module.exports = {
 				js: "never",
 			},
 		],
-
-		"@typescript-eslint/no-non-null-assertion": "off",
 	},
 };

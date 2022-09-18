@@ -3,9 +3,10 @@ import { StyledLayout, StyledHeader, StyledContent, StyledFooter } from "./layou
 
 type LayoutProps = {
 	children: JSX.Element;
+	page: string;
 };
 
-const Layout: React.FC<LayoutProps> = ({ children }) => (
+const Layout: React.FC<LayoutProps> = ({ children, page }) => (
 	<StyledLayout>
 		<StyledHeader>
 			<div id="header">

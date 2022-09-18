@@ -43,6 +43,7 @@ export const StyledFooter = styled.footer`
   max-width: 900px;
   padding: 0 18px;
   height: ${({ theme }) => theme.heights.footer};
+  background: #f9f9fa;
 `;
 
 export default {};

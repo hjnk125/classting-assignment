@@ -6,6 +6,7 @@ export const StyledButton = styled.button`
 	border-radius: 6.75px;
 	font-weight: 500;
 	font-size: 16px;
+  cursor: pointer;
 	
 	&.default {
     background: ${({ theme }) => theme.colors.primary};

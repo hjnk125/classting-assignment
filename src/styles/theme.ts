@@ -10,7 +10,7 @@ const theme: DefaultTheme = {
 	},
 	heights: {
 		header: "50px",
-		footer: "200px"
+		footer: "100px"
 	}
 };
 
