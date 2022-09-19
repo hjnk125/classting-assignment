@@ -28,10 +28,10 @@ export const StyledHeader = styled.header`
     max-width: 1280px;
     display: flex;
     align-items: center;
-
-    > div.timer {
-      margin-left: auto;
-    }
+		
+		> div.timer {
+			margin-left: auto;
+		}
   }
 `;
 
@@ -54,7 +54,7 @@ export const StyledFooter = styled.footer`
   line-height: 24px;
 
   > b {
-    display: block;
+		display: block;
     font-weight: 600;
   }
 `;

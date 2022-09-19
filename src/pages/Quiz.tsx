@@ -68,6 +68,8 @@ const StyledOption = styled.li`
 
 function Quiz() {
 
+	const navigate = useNavigate();
+
 	const questions = useRecoilValue(questionsAtom);
 	const correctAnswers = useRecoilValue(correctAnswersAtom);
 
@@ -96,12 +98,15 @@ function Quiz() {
 	};
 
 	const handleClickNext = () => {
+		if (selected !== null) {
+			setUserAnswers([...userAnswers, selected]);
+		}
+
 		if (currIndex < 9) {
-			if (selected !== null) {
-				setUserAnswers([...userAnswers, selected]);
-			}
 			setSelected(null);
 			setCurrIndex((prev) => prev + 1);
+		} else {
+			navigate("/result");
 		}
 	};
 

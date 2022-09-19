@@ -54,10 +54,9 @@ function Main() {
 		fetchQuiz()
 			.then((res) => {
 				setQuestions(res);
+				getRandomAnswerSheet();
+				navigate("/quiz");
 			});
-
-		getRandomAnswerSheet();
-		navigate("/quiz");
 	};
 
 	return (

@@ -6,6 +6,7 @@ import GlobalStyle from "./styles/gloabalStyle";
 import theme from "./styles/theme";
 import Main from "./pages/Main";
 import Quiz from "./pages/Quiz";
+import Result from "./pages/Result";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Main />} />
 						<Route path="/quiz" element={<Quiz />} />
+						<Route path="/result" element={<Result />} />
 					</Routes>
 				</BrowserRouter>
 			</RecoilRoot>

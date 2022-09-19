@@ -16,12 +16,12 @@ const Layout: React.FC<LayoutProps> = ({ children, page }) => {
 		<StyledLayout>
 			<StyledHeader>
 				<div id="header">
-					{page === "quiz" && <Button buttonType="outlined" handleClick={() => navigate("/")}>
+					{page !== "main" && <Button buttonType="outlined" handleClick={() => navigate("/")}>
 						메인으로
 					</Button>}
-					<div className="timer">
+					{page === "quiz" && <div className="timer">
 						00:00:00
-					</div>
+					</div>}
 				</div>
 			</StyledHeader>
 			<StyledContent>{children}</StyledContent>
