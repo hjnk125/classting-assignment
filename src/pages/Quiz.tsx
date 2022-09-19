@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 import { correctAnswersAtom, questionsAtom, userAnswersAtom } from "../store/atoms";
 import { decodeHtml } from "../utils/stringHandler";
 import Button from "../components/Button";
+import { StyledOption, StyledOptionContainer, StyledQuestion } from "../styles/shared";
 
 const StyledQuiz = styled.div`
   display: flex;
@@ -15,54 +16,8 @@ const StyledQuiz = styled.div`
   width: 100%;
   padding: 120px 80px;
 
-  div.question {
-    display: flex;
-    gap: 8px;
-    font-size: 30px;
-    line-height: 38px;
-    color: ${({ theme }) => theme.colors.black};
-    margin-bottom: 24px;
-
-    > h3 {
-      white-space: pre-line;
-    }
-  }
-
-  ul.options {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-size: 18px;
-    margin-bottom: 24px;
-  }
-
   button {
     margin-top: auto;
-  }
-
-  div.next-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
-`;
-
-const StyledOption = styled.li`
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  gap: 8px;
-  cursor: pointer;
-  border-radius: 8px;
-  white-space: pre-line;
-
-  &.correct {
-    background: ${({ theme }) => theme.colors.correct};
-  }
-
-  &.wrong {
-    background: ${({ theme }) => theme.colors.wrong};
   }
 `;
 
@@ -113,25 +68,25 @@ function Quiz() {
 	return (
 		<Layout page="quiz">
 			<StyledQuiz>
-				<div className="question">
+				<StyledQuestion>
 					<p>{currIndex + 1}.</p>
 					<h3>{decodeHtml(questions[currIndex].question)}</h3>
-				</div>
+				</StyledQuestion>
 
-				<ul className="options">
+				<StyledOptionContainer>
 					{getOptionsList().map((option, i) =>
 						<StyledOption key={option} className={getOptionStyle(i)}
 													onClick={() => selected === null && (i === 0 || i === 1 || i === 2 || i === 3) && setSelected(i)}>
 							{selected === i ? <ImRadioChecked /> : <ImRadioUnchecked />}
 							{decodeHtml(option)}
 						</StyledOption>)}
-				</ul>
+				</StyledOptionContainer>
 
 				{selected !== null && <Button buttonType="default" handleClick={handleClickNext}>
-					<div className="next-btn">
+					<>
 						{currIndex < 9 ? "다음 문제" : "결과 보기"}
 						<FaArrowRight />
-					</div>
+					</>
 				</Button>}
 			</StyledQuiz>
 		</Layout>

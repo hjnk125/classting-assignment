@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ImRadioChecked, ImRadioUnchecked } from "react-icons/im";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { FaArrowRight, FaEdit, FaRedoAlt } from "react-icons/fa";
+import { FaRedoAlt } from "react-icons/fa";
 import Layout from "../components/Layout";
 import { correctAnswersAtom, questionsAtom, userAnswersAtom, wrongQuestionsAtom } from "../store/atoms";
 import { decodeHtml } from "../utils/stringHandler";
 import Button from "../components/Button";
+import { StyledOption, StyledOptionContainer, StyledQuestion } from "../styles/shared";
 
 const StyledReview = styled.div`
   display: flex;
@@ -15,52 +16,6 @@ const StyledReview = styled.div`
   width: 100%;
   padding: 80px;
   gap: 56px;
-
-  div.question {
-    display: flex;
-    gap: 8px;
-    font-size: 30px;
-    line-height: 38px;
-    color: ${({ theme }) => theme.colors.black};
-    margin-bottom: 24px;
-
-    > h3 {
-      white-space: pre-line;
-    }
-  }
-
-  ul.options {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-size: 18px;
-    margin-bottom: 24px;
-  }
-
-  div.review-btn {
-    display: flex;
-		justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
-`;
-
-const StyledOption = styled.li`
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  gap: 8px;
-  cursor: pointer;
-  border-radius: 8px;
-  white-space: pre-line;
-
-  &.correct {
-    background: ${({ theme }) => theme.colors.correct};
-  }
-
-  &.wrong {
-    background: ${({ theme }) => theme.colors.wrong};
-  }
 `;
 
 function Review() {
@@ -100,26 +55,26 @@ function Review() {
 
 				{questions.filter((question, i) => wrongQuestions.includes(i))
 					.map((question, i) => <div key={wrongQuestions[i]}>
-						<div className="question">
+						<StyledQuestion>
 							<p>{wrongQuestions[i] + 1}.</p>
 							<h3>{decodeHtml(question.question)}</h3>
-						</div>
+						</StyledQuestion>
 
-						<ul className="options">
+						<StyledOptionContainer>
 							{getOptionsList(wrongQuestions[i]).map((option, j) =>
 								<StyledOption key={option}
 															className={getOptionStyle(j, userAnswers[wrongQuestions[i]], correctAnswers[wrongQuestions[i]])}>
 									{userAnswers[wrongQuestions[i]] === j ? <ImRadioChecked /> : <ImRadioUnchecked />}
 									{decodeHtml(option)}
 								</StyledOption>)}
-						</ul>
+						</StyledOptionContainer>
 					</div>)}
 
 					<Button buttonType="default" handleClick={redoQuiz}>
-						<div className="review-btn">
+						<>
 							다시 풀기
 							<FaRedoAlt />
-						</div>
+						</>
 					</Button>
 			</StyledReview>
 		</Layout>

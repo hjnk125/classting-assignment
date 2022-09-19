@@ -7,6 +7,7 @@ import Layout from "../components/Layout";
 import Button from "../components/Button";
 import { fetchQuiz } from "../apis";
 import { correctAnswersAtom, questionsAtom, userAnswersAtom } from "../store/atoms";
+import { StyledTitle } from "../styles/shared";
 
 const StyledMain = styled.div`
   display: flex;
@@ -16,19 +17,6 @@ const StyledMain = styled.div`
   width: 100%;
   flex-grow: 1;
   gap: 27px;
-
-  h1 {
-    font-weight: bold;
-    font-size: 2.25rem;
-    line-height: 1.22222;
-    white-space: pre-line;
-  }
-
-  div.main-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
 `;
 
 function Main() {
@@ -62,12 +50,12 @@ function Main() {
 	return (
 		<Layout page="main">
 			<StyledMain>
-				<h1>퀴즈를 시작해보세요.</h1>
+				<StyledTitle>퀴즈를 시작해보세요.</StyledTitle>
 				<Button buttonType="default" handleClick={handleClickStart}>
-					<div className="main-btn">
+					<>
 						퀴즈 풀기
 						<FaArrowRight />
-					</div>
+					</>
 				</Button>
 			</StyledMain>
 		</Layout>

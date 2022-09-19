@@ -6,6 +6,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
 import { correctAnswersAtom, userAnswersAtom, wrongQuestionsAtom } from "../store/atoms";
+import { StyledTitle } from "../styles/shared";
 
 const StyledResult = styled.div`
   display: flex;
@@ -16,25 +17,12 @@ const StyledResult = styled.div`
   flex-grow: 1;
   gap: 27px;
 
-  h1 {
-    font-weight: bold;
-    font-size: 2.25rem;
-    line-height: 1.22222;
-    white-space: pre-line;
-  }
-
   p.result-time {
     font-size: 14px;
     color: ${({ theme }) => theme.colors.gray};
   }
 
   div.btn-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  div.result-btn {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -78,22 +66,20 @@ function Result() {
 		<Layout page="result">
 			<StyledResult>
 				<p>결과</p>
-				<h1>{score} / 10</h1>
+				<StyledTitle>{score} / 10</StyledTitle>
 
 				<p className="result-time">소요시간 00:00:00</p>
 
 				<div className="btn-container">
 					<Button buttonType="outlined" handleClick={() => navigate("/review")}>
-						<div className="result-btn">
-							오답 확인하기
-							<FaEdit />
-						</div>
+						<>
+							오답 확인하기<FaEdit />
+						</>
 					</Button>
 					<Button buttonType="default" handleClick={redoQuiz}>
-						<div className="result-btn">
-							다시 풀기
-							<FaRedoAlt />
-						</div>
+						<>
+							다시 풀기<FaRedoAlt />
+						</>
 					</Button>
 				</div>
 			</StyledResult>

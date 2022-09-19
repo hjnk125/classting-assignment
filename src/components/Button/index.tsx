@@ -9,13 +9,15 @@ type ButtonProps = {
 
 const Button = ({ children, buttonType, handleClick }: ButtonProps) => (
 	<StyledButton className={buttonType} onClick={handleClick}>
-		{children}
+		<div className="btn-content">
+			{children}
+		</div>
 	</StyledButton>
 );
 
 Button.defaultProps = {
 	buttonType: "default",
-	handleClick: () => null,
+	handleClick: () => null
 };
 
 export default Button;
