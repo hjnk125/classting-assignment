@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledLayout, StyledHeader, StyledContent, StyledFooter } from "./layoutStyle";
 import Button from "../Button";
+import Timer from "../Timer";
 
 type LayoutProps = {
 	children: JSX.Element;
@@ -20,7 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children, page }) => {
 						메인으로
 					</Button>}
 					{page === "quiz" && <div className="timer">
-						00:00:00
+						<Timer />
 					</div>}
 				</div>
 			</StyledHeader>

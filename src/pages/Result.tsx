@@ -5,8 +5,9 @@ import { FaRedoAlt, FaEdit } from "react-icons/fa";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
-import { correctAnswersAtom, userAnswersAtom, wrongQuestionsAtom } from "../store/atoms";
+import { correctAnswersAtom, timerAtom, userAnswersAtom, wrongQuestionsAtom } from "../store/atoms";
 import { StyledDescription, StyledTitle } from "../styles/shared";
+import { getTimeFormat } from "../utils/timeHandler";
 
 const StyledResult = styled.div`
   display: flex;
@@ -32,6 +33,8 @@ function Result() {
 	const [userAnswers, setUserAnswers] = useRecoilState(userAnswersAtom);
 	const setWrongQuestions = useSetRecoilState(wrongQuestionsAtom);
 
+	const [timer, setTimer] = useRecoilState(timerAtom);
+
 	const [score, setScore] = useState<number>(0);
 
 	const getScore = () => {
@@ -54,6 +57,7 @@ function Result() {
 
 	const redoQuiz = () => {
 		setUserAnswers([]);
+		setTimer({ start: true, sec: 0 });
 		navigate("/quiz");
 	};
 
@@ -62,7 +66,7 @@ function Result() {
 			<StyledResult>
 				<p>결과</p>
 				<StyledTitle>{score} / 10</StyledTitle>
-				<StyledDescription>소요시간 00:00:00</StyledDescription>
+				<StyledDescription>소요시간 {getTimeFormat(timer.sec)}</StyledDescription>
 
 				<div className="btn-container">
 					<Button buttonType="outlined" handleClick={() => navigate("/review")}>

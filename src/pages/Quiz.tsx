@@ -5,7 +5,7 @@ import { ImRadioChecked, ImRadioUnchecked } from "react-icons/im";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { FaArrowRight } from "react-icons/fa";
 import Layout from "../components/Layout";
-import { correctAnswersAtom, questionsAtom, userAnswersAtom } from "../store/atoms";
+import { correctAnswersAtom, questionsAtom, timerAtom, userAnswersAtom } from "../store/atoms";
 import { decodeHtml } from "../utils/stringHandler";
 import Button from "../components/Button";
 import { StyledOption, StyledOptionContainer, StyledQuestion } from "../styles/shared";
@@ -29,6 +29,8 @@ function Quiz() {
 	const correctAnswers = useRecoilValue(correctAnswersAtom);
 
 	const [userAnswers, setUserAnswers] = useRecoilState(userAnswersAtom);
+
+	const [timer, setTimer] = useRecoilState(timerAtom)
 
 	const [currIndex, setCurrIndex] = useState(userAnswers?.length || 0);
 
@@ -62,6 +64,7 @@ function Quiz() {
 			setCurrIndex((prev) => prev + 1);
 		} else {
 			navigate("/result");
+			setTimer({...timer, start: false})
 		}
 	};
 

@@ -2,10 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ImRadioChecked, ImRadioUnchecked } from "react-icons/im";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { FaRedoAlt } from "react-icons/fa";
 import Layout from "../components/Layout";
-import { correctAnswersAtom, questionsAtom, userAnswersAtom, wrongQuestionsAtom } from "../store/atoms";
+import { correctAnswersAtom, questionsAtom, timerAtom, userAnswersAtom, wrongQuestionsAtom } from "../store/atoms";
 import { decodeHtml } from "../utils/stringHandler";
 import Button from "../components/Button";
 import { StyledOption, StyledOptionContainer, StyledQuestion } from "../styles/shared";
@@ -27,6 +27,8 @@ function Review() {
 	const [userAnswers, setUserAnswers] = useRecoilState(userAnswersAtom);
 	const wrongQuestions = useRecoilValue(wrongQuestionsAtom);
 
+	const setTimer = useSetRecoilState(timerAtom);
+
 	const getOptionsList = (quesIndex: number) => {
 		const options = questions[quesIndex].incorrect_answers.slice();
 		options.splice(correctAnswers[quesIndex], 0, questions[quesIndex].correct_answer);
@@ -46,6 +48,7 @@ function Review() {
 	const redoQuiz = () => {
 		setUserAnswers([]);
 		navigate("/quiz");
+		setTimer({ start: true, sec: 0 });
 	};
 
 	return (

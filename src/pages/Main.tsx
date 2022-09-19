@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
 import { fetchQuiz } from "../apis";
-import { correctAnswersAtom, questionsAtom, userAnswersAtom } from "../store/atoms";
+import { correctAnswersAtom, questionsAtom, timerAtom, userAnswersAtom } from "../store/atoms";
 import { StyledTitle } from "../styles/shared";
 
 const StyledMain = styled.div`
@@ -25,6 +25,7 @@ function Main() {
 	const setQuestions = useSetRecoilState(questionsAtom);
 	const setAnswers = useSetRecoilState(correctAnswersAtom);
 	const setUserAnswers = useSetRecoilState(userAnswersAtom);
+	const setTimer = useSetRecoilState(timerAtom);
 
 	const getRandomAnswerSheet = () => {
 		const answer = [] as (0 | 1 | 2 | 3)[];
@@ -44,6 +45,8 @@ function Main() {
 				setQuestions(res);
 				getRandomAnswerSheet();
 				navigate("/quiz");
+
+				setTimer({start: true, sec: 0})
 			});
 	};
 

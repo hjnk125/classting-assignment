@@ -7,6 +7,15 @@ const { persistAtom: sessionAtom } = recoilPersist({
 	storage: typeof window === "undefined" ? undefined : sessionStorage
 });
 
+export const timerAtom = atom<{ start: boolean; sec: number; }>({
+	key: "timerAtom",
+	default: {
+		start: false,
+		sec: 0
+	},
+	effects: [sessionAtom]
+});
+
 export const questionsAtom = atom<QuestionType[]>({
 	key: "questionsAtom",
 	default: [] as QuestionType[],
