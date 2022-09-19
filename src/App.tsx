@@ -7,6 +7,7 @@ import theme from "./styles/theme";
 import Main from "./pages/Main";
 import Quiz from "./pages/Quiz";
 import Result from "./pages/Result";
+import Review from "./pages/Review";
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 						<Route path="/" element={<Main />} />
 						<Route path="/quiz" element={<Quiz />} />
 						<Route path="/result" element={<Result />} />
+						<Route path="/review" element={<Review />} />
 					</Routes>
 				</BrowserRouter>
 			</RecoilRoot>

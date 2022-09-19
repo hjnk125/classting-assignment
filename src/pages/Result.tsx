@@ -22,17 +22,17 @@ const StyledResult = styled.div`
     line-height: 1.22222;
     white-space: pre-line;
   }
-	
-	p.result-time {
+
+  p.result-time {
     font-size: 14px;
     color: ${({ theme }) => theme.colors.gray};
   }
-	
-	div.btn-container {
+
+  div.btn-container {
     display: flex;
     align-items: center;
     gap: 8px;
-	}
+  }
 
   div.result-btn {
     display: flex;
@@ -70,9 +70,9 @@ function Result() {
 	}, []);
 
 	const redoQuiz = () => {
-		setUserAnswers([])
-		navigate("/quiz")
-	}
+		setUserAnswers([]);
+		navigate("/quiz");
+	};
 
 	return (
 		<Layout page="result">
@@ -83,7 +83,7 @@ function Result() {
 				<p className="result-time">소요시간 00:00:00</p>
 
 				<div className="btn-container">
-					<Button buttonType="outlined">
+					<Button buttonType="outlined" handleClick={() => navigate("/review")}>
 						<div className="result-btn">
 							오답 확인하기
 							<FaEdit />

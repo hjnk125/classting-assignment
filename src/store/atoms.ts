@@ -28,6 +28,7 @@ export const userAnswersAtom = atom<(0 | 1 | 2 | 3)[]>({
 export const wrongQuestionsAtom = atom<number[]>({
 	key: "wrongQuestionsAtom",
 	default: [] as number[],
+	effects: [sessionAtom]
 });
 
 export default {};

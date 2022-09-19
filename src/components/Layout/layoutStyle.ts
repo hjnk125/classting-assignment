@@ -22,6 +22,7 @@ export const StyledHeader = styled.header`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   height: ${({ theme }) => theme.heights.header};
   padding: 0 18px;
+  background: ${({ theme }) => theme.colors.white};
 
   > div#header {
     width: 100%;
