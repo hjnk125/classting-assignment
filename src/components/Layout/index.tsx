@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children, page }) => {
 
 	return (
 		<StyledLayout>
-			<StyledHeader>
+			<StyledHeader className={page !== "main" ? "shadow" : ""}>
 				<div id="header">
 					{page !== "main" && <Button buttonType="outlined" handleClick={() => navigate("/")}>
 						메인으로
@@ -26,9 +26,11 @@ const Layout: React.FC<LayoutProps> = ({ children, page }) => {
 			</StyledHeader>
 			<StyledContent>{children}</StyledContent>
 			<StyledFooter>
-				<b>프론트엔드 개발자 과제</b>
-				<p>김호정 | hjnk125@gmail.com</p>
-				<a href="https://github.com/hjnk125/classting-assignment">https://github.com/hjnk125/classting-assignment</a>
+				<div id="footer">
+					<b>프론트엔드 개발자 과제</b>
+					<p>김호정 | hjnk125@gmail.com</p>
+					<a href="https://github.com/hjnk125/classting-assignment">https://github.com/hjnk125/classting-assignment</a>
+				</div>
 			</StyledFooter>
 		</StyledLayout>
 	);

@@ -7,6 +7,11 @@ export const StyledTitle = styled.h1`
   white-space: pre-line;
 `
 
+export const StyledDescription = styled.p`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.gray};
+`
+
 export const StyledQuestion = styled.div`
   display: flex;
   gap: 8px;

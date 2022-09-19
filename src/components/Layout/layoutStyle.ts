@@ -19,20 +19,23 @@ export const StyledHeader = styled.header`
   justify-content: center;
   align-items: center;
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   height: ${({ theme }) => theme.heights.header};
   padding: 0 18px;
   background: ${({ theme }) => theme.colors.white};
+
+  &.shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
 
   > div#header {
     width: 100%;
     max-width: 1280px;
     display: flex;
     align-items: center;
-		
-		> div.timer {
-			margin-left: auto;
-		}
+
+    > div.timer {
+      margin-left: auto;
+    }
   }
 `;
 
@@ -42,21 +45,29 @@ export const StyledContent = styled.main`
   width: 100%;
   max-width: 1280px;
   height: 100%;
-  min-height: calc(100vh - ${({ theme }) => theme.heights.header});
+  min-height: calc(100vh - ${({ theme }) => theme.heights.footer});
 `;
 
 export const StyledFooter = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 900px;
+  height: ${({ theme }) => theme.heights.footer};
   padding: 18px;
   background: #f9f9fa;
   color: ${({ theme }) => theme.colors.gray};
   font-size: 14px;
   line-height: 24px;
 
-  > b {
-		display: block;
-    font-weight: 600;
+  div#footer {
+    width: 100%;
+    max-width: 1280px;
+
+    > b {
+      display: block;
+      font-weight: 600;
+    }
   }
 `;
 

@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
 import { correctAnswersAtom, userAnswersAtom, wrongQuestionsAtom } from "../store/atoms";
-import { StyledTitle } from "../styles/shared";
+import { StyledDescription, StyledTitle } from "../styles/shared";
 
 const StyledResult = styled.div`
   display: flex;
@@ -16,11 +16,6 @@ const StyledResult = styled.div`
   width: 100%;
   flex-grow: 1;
   gap: 27px;
-
-  p.result-time {
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.gray};
-  }
 
   div.btn-container {
     display: flex;
@@ -67,8 +62,7 @@ function Result() {
 			<StyledResult>
 				<p>결과</p>
 				<StyledTitle>{score} / 10</StyledTitle>
-
-				<p className="result-time">소요시간 00:00:00</p>
+				<StyledDescription>소요시간 00:00:00</StyledDescription>
 
 				<div className="btn-container">
 					<Button buttonType="outlined" handleClick={() => navigate("/review")}>
