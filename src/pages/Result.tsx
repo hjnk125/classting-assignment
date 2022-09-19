@@ -8,6 +8,7 @@ import Button from "../components/Button";
 import { correctAnswersAtom, timerAtom, userAnswersAtom, wrongQuestionsAtom } from "../store/atoms";
 import { StyledDescription, StyledTitle } from "../styles/shared";
 import { getTimeFormat } from "../utils/timeHandler";
+import Chart from "../components/Chart";
 
 const StyledResult = styled.div`
   display: flex;
@@ -17,6 +18,21 @@ const StyledResult = styled.div`
   width: 100%;
   flex-grow: 1;
   gap: 27px;
+
+  div.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    > h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+  }
 
   div.btn-container {
     display: flex;
@@ -64,9 +80,12 @@ function Result() {
 	return (
 		<Layout page="result">
 			<StyledResult>
-				<p>결과</p>
-				<StyledTitle>{score} / 10</StyledTitle>
-				<StyledDescription>소요시간 {getTimeFormat(timer.sec)}</StyledDescription>
+				<p>총 소요시간 {getTimeFormat(timer.sec)}</p>
+				<div className="chart-container">
+					<Chart data={[{ name: "정답", value: score }, { name: "오답", value: 10 - score }]} />
+					<StyledTitle>{score} / 10</StyledTitle>
+				</div>
+				<StyledDescription>정답 {score}문제 / 오답 {10 - score}문제</StyledDescription>
 
 				<div className="btn-container">
 					<Button buttonType="outlined" handleClick={() => navigate("/review")}>
