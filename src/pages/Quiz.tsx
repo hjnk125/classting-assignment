@@ -33,6 +33,7 @@ const StyledQuiz = styled.div`
     flex-direction: column;
     gap: 4px;
     font-size: 18px;
+    margin-bottom: 24px;
   }
 
   button {

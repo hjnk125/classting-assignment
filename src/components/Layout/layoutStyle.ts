@@ -26,6 +26,12 @@ export const StyledHeader = styled.header`
   > div#header {
     width: 100%;
     max-width: 1280px;
+    display: flex;
+    align-items: center;
+
+    > div.timer {
+      margin-left: auto;
+    }
   }
 `;
 
@@ -41,9 +47,16 @@ export const StyledContent = styled.main`
 export const StyledFooter = styled.footer`
   width: 100%;
   max-width: 900px;
-  padding: 0 18px;
-  height: ${({ theme }) => theme.heights.footer};
+  padding: 18px;
   background: #f9f9fa;
+  color: ${({ theme }) => theme.colors.gray};
+  font-size: 14px;
+  line-height: 24px;
+
+  > b {
+    display: block;
+    font-weight: 600;
+  }
 `;
 
 export default {};

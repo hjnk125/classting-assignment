@@ -10,8 +10,7 @@ const theme: DefaultTheme = {
 		wrong: "hsl(0, 95%, 92%)"
 	},
 	heights: {
-		header: "50px",
-		footer: "100px"
+		header: "68px"
 	}
 };
 
