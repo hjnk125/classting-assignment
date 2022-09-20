@@ -53,7 +53,7 @@ function Review() {
 
 	return (
 		<Layout page="review">
-			<StyledReview>
+			<StyledReview data-testid="review">
 				<p>오답노트(총 {wrongQuestions.length}문제)</p>
 
 				{questions.filter((question, i) => wrongQuestions.includes(i))

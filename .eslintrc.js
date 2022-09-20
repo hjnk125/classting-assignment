@@ -1,5 +1,8 @@
 module.exports = {
 	parser: "@typescript-eslint/parser",
+	parserOptions: {
+		parser: "@typescript-eslint/parser",
+	},
 	plugins: ["react", "react-hooks", "@typescript-eslint", "import", "jsx-a11y"],
 	extends: [
 		"airbnb",
@@ -9,12 +12,12 @@ module.exports = {
 		"plugin:@typescript-eslint/recommended",
 		"plugin:import/recommended",
 		"plugin:import/typescript",
-		"plugin:jsx-a11y/recommended",
+		"plugin:jsx-a11y/recommended"
 	],
 	rules: {
 		"react/jsx-filename-extension": [1, { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
 		"no-console": ["warn", { allow: ["warn", "error"] }],
-		quotes: ["error", "double"],
+		"quotes": ["error", "double"],
 		"react/function-component-definition": "off",
 		"default-param-last": "off",
 		"import/extensions": [
@@ -23,8 +26,11 @@ module.exports = {
 			{
 				ts: "never",
 				tsx: "never",
-				js: "never",
-			},
-		],
+				js: "never"
+			}
+		]
 	},
+	"env": {
+		"jest": true
+	}
 };

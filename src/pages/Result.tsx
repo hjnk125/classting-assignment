@@ -79,7 +79,7 @@ function Result() {
 
 	return (
 		<Layout page="result">
-			<StyledResult>
+			<StyledResult data-testid="result">
 				<p>총 소요시간 {getTimeFormat(timer.sec)}</p>
 				<div className="chart-container">
 					<Chart data={[{ name: "정답", value: score }, { name: "오답", value: 10 - score }]} />

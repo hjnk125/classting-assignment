@@ -70,7 +70,7 @@ function Quiz() {
 
 	return (
 		<Layout page="quiz">
-			<StyledQuiz>
+			<StyledQuiz data-testid="quiz">
 				<StyledQuestion>
 					<p>{currIndex + 1}.</p>
 					<h3>{decodeHtml(questions[currIndex].question)}</h3>

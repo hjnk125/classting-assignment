@@ -52,7 +52,7 @@ function Main() {
 
 	return (
 		<Layout page="main">
-			<StyledMain>
+			<StyledMain data-testid="main">
 				<StyledTitle>퀴즈를 시작해보세요.</StyledTitle>
 				<Button buttonType="default" handleClick={handleClickStart}>
 					<>
